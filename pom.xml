@@ -83,5 +83,17 @@
             <version>1.16.22</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.intellij/forms_rt -->
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>forms_rt</artifactId>
+            <version>7.0.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/edu.vt.middleware/vt-password -->
+        <dependency>
+            <groupId>edu.vt.middleware</groupId>
+            <artifactId>vt-password</artifactId>
+            <version>3.1.2</version>
+        </dependency>
     </dependencies>
 </project>
