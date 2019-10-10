@@ -1,4 +1,4 @@
-package com.javafee.com.javafee.loginform;
+package com.javafee.loginform;
 
 import java.util.Date;
 

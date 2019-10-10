@@ -1,4 +1,4 @@
-package com.javafee.com.javafee.loginform;
+package com.javafee.loginform;
 
 import javax.swing.JOptionPane;
 
@@ -20,7 +20,7 @@ public class Actions {
 			MainSplashScreen.getInstance(Constants.MAIN_SPLASH_SCREEN_IMAGE, logInForm,
 					Constants.MAIN_SPLASH_SCREEN_DURATION);
 		else
-			logInForm.getLogInPanel().setVisible(false);
+			logInForm.$$$getRootComponent$$$().setVisible(true);
 
 		logInForm.getBtnLogIn().addActionListener(e -> onClickBtnLogIn());
 	}
@@ -66,9 +66,15 @@ public class Actions {
 						SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInSuccess1"),
 						SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInSuccess1Title"),
 						JOptionPane.INFORMATION_MESSAGE);
-				//open tabbed form
+				openTabbedForm();
 			}
 		}
+	}
+	
+	private void openTabbedForm() {
+		logInForm.$$$getRootComponent$$$().setVisible(false);
+		com.javafee.tabbedform.Actions actions = new com.javafee.tabbedform.Actions();
+		actions.control();
 	}
 
 	private void clearLogInFailsInParams() {
