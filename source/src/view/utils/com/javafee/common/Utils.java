@@ -29,7 +29,7 @@ public class Utils {
 	}
 
 	public static int displayConfirmDialog(String message, String title) {
-		Object[] options = { SystemProperties.getInstance().getResourceBundle().getString("confirmDialog.yes"), SystemProperties.getInstance().getResourceBundle().getString("confirmDialog.no") };
+		Object[] options = { "Yes", "No" };
 		return JOptionPane.showOptionDialog(null, message, title,
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, 
 				options, 

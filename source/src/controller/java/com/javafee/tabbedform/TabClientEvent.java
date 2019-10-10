@@ -143,10 +143,8 @@ public final class TabClientEvent implements IActionForm {
 			}
 		} else {
 			LogGuiException.logWarning(
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("tabClientEvent.notSelectedClientWarningTitle"),
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("tabClientEvent.notSelectedClientWarning"));
+					"Client not selected",
+					"Client does not have been selected. The action can not been performed.");
 		}
 
 		// this.reloadClientTable();
@@ -158,7 +156,7 @@ public final class TabClientEvent implements IActionForm {
 					.convertRowIndexToModel(tabbedForm.getPanelClient().getClientTable().getSelectedRow());
 
 			if (Utils.displayConfirmDialog(
-					SystemProperties.getInstance().getResourceBundle().getString("confirmDialog.deleteMessage"),
+					"Do you really want to delete?",
 					"") == JOptionPane.YES_OPTION) {
 				if (selectedRowIndex != -1) {
 					Client selectedClient = ((ClientTableModel) tabbedForm.getPanelClient().getClientTable().getModel())
@@ -173,10 +171,8 @@ public final class TabClientEvent implements IActionForm {
 			}
 		} else {
 			LogGuiException.logWarning(
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("tabClientEvent.notSelectedClientWarningTitle"),
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("tabClientEvent.notSelectedClientWarning"));
+					"Client not selected",
+					"Client does not have been selected. The action can not been performed.");
 		}
 	}
 
@@ -286,10 +282,8 @@ public final class TabClientEvent implements IActionForm {
 			reloadClientTable();
 		} else {
 			Utils.displayOptionPane(
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("tabClientEvent.validateClientTableSelectionWarning1"),
-					SystemProperties.getInstance().getResourceBundle().getString(
-							"tabClientEvent.validateClientTableSelectionWarning1Title"),
+					"Select client from table to end registration process.",
+					"Client not selected",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
@@ -299,7 +293,7 @@ public final class TabClientEvent implements IActionForm {
 				&& tabbedForm.getPanelClient().getClientTable()
 						.convertRowIndexToModel(tabbedForm.getPanelClient().getClientTable().getSelectedRow()) != -1)
 			reloadChckbxIsRegistered(
-					(SystemProperties.getInstance().getResourceBundle().getString("clientTableModel.registeredTrueVal"))
+					("Yes")
 							.equals(tabbedForm.getPanelClient().getClientTable().getModel().getValueAt(
 									tabbedForm.getPanelClient().getClientTable().convertRowIndexToModel(
 											tabbedForm.getPanelClient().getClientTable().getSelectedRow()),
@@ -334,7 +328,7 @@ public final class TabClientEvent implements IActionForm {
 	// }
 
 	public boolean validateClientTableSelection(int index) {
-		return index > -1 ? true : false;
+		return index > -1;
 	}
 
 	// Comment because of new addition and modification mechanism
