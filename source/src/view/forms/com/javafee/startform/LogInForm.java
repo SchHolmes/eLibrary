@@ -22,6 +22,7 @@ import lombok.Getter;
 @Getter
 public class LogInForm {
 
+	private JFrame frame;
 	private JPanel logInPanel;
 	private JButton btnLogIn;
 	private JTextField textFieldLogin;
@@ -153,7 +154,7 @@ public class LogInForm {
 	}
 
 	public void initialize(JPanel contentPane) {
-		JFrame frame = new JFrame(Constants.APPLICATION_NAME);
+		frame = new JFrame(Constants.APPLICATION_NAME);
 		frame.setIconImage(
 				Toolkit.getDefaultToolkit().getImage(LogInForm.class.getResource("/images/splashScreen.jpg")));
 		frame.setContentPane(contentPane);

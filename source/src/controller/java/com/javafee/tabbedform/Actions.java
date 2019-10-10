@@ -27,7 +27,7 @@ public class Actions implements IActionForm {
 
 	@Override
 	public void initializeForm() {
-		reloadLblLogInInformationDynamic();
+		//reloadLblLogInInformationDynamic();
 		reloadTabbedPane();
 	}
 

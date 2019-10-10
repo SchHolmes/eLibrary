@@ -20,7 +20,7 @@ public class Actions {
 			MainSplashScreen.getInstance(Constants.MAIN_SPLASH_SCREEN_IMAGE, logInForm,
 					Constants.MAIN_SPLASH_SCREEN_DURATION);
 		else
-			logInForm.$$$getRootComponent$$$().setVisible(true);
+			logInForm.getFrame().setVisible(true);
 
 		logInForm.getBtnLogIn().addActionListener(e -> onClickBtnLogIn());
 	}
@@ -70,9 +70,9 @@ public class Actions {
 			}
 		}
 	}
-	
+
 	private void openTabbedForm() {
-		logInForm.$$$getRootComponent$$$().setVisible(false);
+		logInForm.getFrame().setVisible(false);
 		com.javafee.tabbedform.Actions actions = new com.javafee.tabbedform.Actions();
 		actions.control();
 	}
@@ -86,8 +86,7 @@ public class Actions {
 
 	private boolean validateLogIn() {
 		boolean result = false;
-		if (logInForm.getTextFieldLogin().getText().isEmpty()
-				|| logInForm.getPasswordField().getPassword().length == 0)
+		if (logInForm.getTextFieldLogin().getText().isEmpty() || logInForm.getPasswordField().getPassword().length == 0)
 			JOptionPane.showMessageDialog(logInForm.$$$getRootComponent$$$(),
 					SystemProperties.getInstance().getResourceBundle().getString("logInForm.validateLogInError1"),
 					SystemProperties.getInstance().getResourceBundle().getString("logInForm.validateLogInError1Title"),
