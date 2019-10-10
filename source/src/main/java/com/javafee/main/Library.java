@@ -3,7 +3,7 @@ package com.javafee.main;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import com.javafee.com.javafee.loginform.Actions;
+import com.javafee.loginform.Actions;
 
 public class Library {
 	public static void main(String[] args) {

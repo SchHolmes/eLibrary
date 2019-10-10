@@ -5,7 +5,23 @@ import java.text.SimpleDateFormat;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class Constants {
+public class Constants {public enum Tab {
+	TAB_CLIENT(0), TAB_LIBRARY(1), TAB_BOOK(2), TAB_LOAN_SERVICE(3), TAB_ADM_DICTIONARY(4), TAB_ADM_WORKER(5);
+
+	private final Integer value;
+
+	Tab(final int newValue) {
+		value = newValue;
+	}
+
+	public Integer getValue() {
+		return value;
+	}
+
+	public static Tab getByNumber(int tabbedPaneSelectedIndex) {
+		return java.util.stream.Stream.of(Tab.values()).filter(item -> item.getValue().equals(tabbedPaneSelectedIndex)).findFirst().get();
+	}
+}
 	public enum Role {
 		ADMIN, WORKER_ACCOUNTANT, WORKER_LIBRARIAN, CLIENT
 	}
@@ -24,10 +40,14 @@ public class Constants {
 		}
 
 		public static ClientTableColumn getByNumber(int clientTableSelectedIndex) {
-			return Stream.of(ClientTableColumn.values()).filter(item -> item.getValue().equals(clientTableSelectedIndex)).findFirst().get();
+			return java.util.stream.Stream.of(ClientTableColumn.values()).filter(item -> item.getValue().equals(clientTableSelectedIndex)).findFirst().get();
 		}
 	}
 
+	public enum Context {
+		ADDITION, MODIFICATION, CANCELED, LOAN, READING_ROOM;
+	}
+	
 	public final int MAIN_SPLASH_SCREEN_DURATION = 1000;
 	public final String MAIN_SPLASH_SCREEN_IMAGE = "source/resources/images/splashScreen.jpg";
 
@@ -43,6 +63,7 @@ public class Constants {
 
 	public static final String LANGUAGE_RESOURCE_BUNDLE = "messages";
 
+	public static final Boolean DATA_BASE_REGISTER_DEFAULT_FLAG = false;
 	public static final Character DATA_BASE_MALE_SIGN = 'M';
 	public static final Character DATA_BASE_FEMALE_SIGN = 'F';
 	public final String DATA_BASE_PACKAGE_TO_SCAN = "com.javafee.hibernate.dto";
