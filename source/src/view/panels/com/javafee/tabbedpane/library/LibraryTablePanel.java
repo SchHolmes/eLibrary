@@ -11,6 +11,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.JTableHeader;
 
 import com.javafee.common.SystemProperties;
+import com.javafee.common.Constants.Role;
+import com.javafee.loginform.LogInEvent;
 import com.javafee.model.VolumeTableLoanModel;
 import com.javafee.model.VolumeTableReadingRoomModel;
 import com.javafee.uniform.CockpitEditionPanel;
@@ -69,6 +71,7 @@ public class LibraryTablePanel extends JPanel {
 		scrollPane.setViewportView(loanVolumeTable);
 		
 		cockpitEditionPanelLoan = new CockpitEditionPanel();
+		cockpitEditionPanelLoan.setVisible(LogInEvent.getRole() != Role.CLIENT);
 		GridBagConstraints gbc_ce_panelLoan = new GridBagConstraints();
 		gbc_ce_panelLoan.anchor = GridBagConstraints.WEST;
 		gbc_ce_panelLoan.insets = new Insets(0, 0, 5, 0);
@@ -109,6 +112,7 @@ public class LibraryTablePanel extends JPanel {
 		scrollPane_readingRoom.setViewportView(readingRoomVolumeTable);
 		
 		cockpitEditionPanelReadingRoom = new CockpitEditionPanel();
+		cockpitEditionPanelReadingRoom.setVisible(LogInEvent.getRole() != Role.CLIENT);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.anchor = GridBagConstraints.WEST;
 		gbc_panel_1.fill = GridBagConstraints.VERTICAL;

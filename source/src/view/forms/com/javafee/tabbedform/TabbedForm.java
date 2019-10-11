@@ -16,6 +16,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import com.javafee.common.Constants;
+import com.javafee.loginform.LogInEvent;
 import com.javafee.startform.LogInForm;
 import com.javafee.tabbedform.clients.ClientTablePanel;
 import com.javafee.tabbedpane.admdictionaries.AdmDictionaryPanel;
@@ -128,18 +129,22 @@ public class TabbedForm {
 		frame.getContentPane().add(tabbedPane, gbc_tabbedPane);
 
 		panelClient = new ClientTablePanel();
+		if (LogInEvent.getRole() != Constants.Role.CLIENT)
 		tabbedPane.addTab("Clients", null, panelClient, null);
 
 		panelLibrary = new LibraryTablePanel();
 		tabbedPane.addTab("Library", null, panelLibrary, null);
 		
 		panelBook = new BookTablePanel();
+		if (LogInEvent.getRole() != Constants.Role.CLIENT)
 		tabbedPane.addTab("Books", null, panelBook, null);
 		
 		panelAdmDictionary = new AdmDictionaryPanel();
+		if (LogInEvent.getRole() != Constants.Role.CLIENT)
 		tabbedPane.addTab("Dictionaries", null, panelAdmDictionary, null);
 		
 		panelLoanService = new LoanServicePanel();
+		if (LogInEvent.getRole() != Constants.Role.CLIENT)
 		tabbedPane.addTab("Loans", null, panelLoanService, null);
 		
 		frame.pack();

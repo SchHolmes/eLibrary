@@ -105,11 +105,11 @@ public class TabLoadServiceEvent implements IActionForm {
 				.forEach(e -> publishingHouse.append(e.getName() != null ? e.getName() : "-").append("\n"));
 
 		tabbedForm.getPanelLoanService().getBookFilterPanel().getTextAreaDetails()
-				.setText(SystemProperties.getInstance().getResourceBundle().getString("tabBookEvent.author") + "\n"
+				.setText("Authors in cloud" + "\n"
 						+ author.toString() + "\n"
-						+ SystemProperties.getInstance().getResourceBundle().getString("tabBookEvent.category") + "\n"
+						+ "Category(ies):" + "\n"
 						+ category.toString() + "\n"
-						+ SystemProperties.getInstance().getResourceBundle().getString("tabBookEvent.publishingHouse")
+						+ "Publishing house(s):"
 						+ "\n" + publishingHouse.toString());
 	}
 
@@ -283,9 +283,9 @@ public class TabLoadServiceEvent implements IActionForm {
 		currentLoan.getVolume().setIsLended(false);
 		if (calculatePenalty() != new BigDecimal(0).doubleValue()) {
 			JOptionPane.showMessageDialog(tabbedForm.getFrame(),
-					SystemProperties.getInstance().getResourceBundle().getString("loanServicePanel.penaltyError") + " "
+					"User have to pay penalty because of untimely book returning. Penalty is:" + " "
 							+ calculatePenalty() + Constants.APPLICATION_CURRENCY,
-					SystemProperties.getInstance().getResourceBundle().getString("loanServicePanel.penaltyErrorTitle"),
+					"Penalty",
 					JOptionPane.ERROR_MESSAGE);
 		}
 
@@ -369,19 +369,15 @@ public class TabLoadServiceEvent implements IActionForm {
 						.fireTableDataChanged();
 			} else {
 				JOptionPane.showMessageDialog(tabbedForm.getFrame(),
-						SystemProperties.getInstance().getResourceBundle()
-								.getString("loanServicePanel.loanLimitExpiredError"),
-						SystemProperties.getInstance().getResourceBundle()
-								.getString("loanServicePanel.loanLimitExpiredErrorTitle"),
+						"Loan limit overstep error. Prolongation can not be made because of overstepping.",
+						"Prolongation limit",
 						JOptionPane.ERROR_MESSAGE);
 			}
 
 		} else {
 			JOptionPane.showMessageDialog(tabbedForm.getFrame(),
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("loanServicePanel.notSelectedLoanError"),
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("loanServicePanel.notSelectedLoanErrorTitle"),
+					"Loan does not have been selected. The action can not been performed.",
+					"Not enough data",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
