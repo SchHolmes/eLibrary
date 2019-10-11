@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "lib_library_worker")
 @AssociationOverrides({@AssociationOverride(name = "pk.worker", joinColumns = @JoinColumn(name = "id_worker")),
 		@AssociationOverride(name = "pk.libraryData", joinColumns = @JoinColumn(name = "id_library_data"))})
-public class LibraryWorker {
+public class LibraryWorker implements Cloneable {
 	@EmbeddedId
 	private LibraryWorkerId pk = new LibraryWorkerId();
 
@@ -51,5 +51,16 @@ public class LibraryWorker {
 
 	public void setLibData(LibraryData libraryData) {
 		getPk().setLibraryData(libraryData);
+	}
+	
+	@Override
+	public Object clone() {
+		Object result = null;
+		try {
+			result = super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
