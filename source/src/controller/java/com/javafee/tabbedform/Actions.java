@@ -51,13 +51,13 @@ public class Actions implements IActionForm {
 			if(LogInEvent.getRole() == Constants.Role.WORKER_ACCOUNTANT || LogInEvent.getRole() == Constants.Role.ADMIN)
 				TabAdmDictioaryEvent.getInstance(tabbedForm);
 			break;
-		/*case TAB_LIBRARY:
+		case TAB_LIBRARY:
 			TabLibraryEvent.getInstance(tabbedForm);
 			break;
 		case TAB_LOAN_SERVICE:
 			TabLoadServiceEvent.getInstance(tabbedForm);
 			break;
-		case TAB_ADM_WORKER:
+		/*case TAB_ADM_WORKER:
 			if(LogInEvent.getRole() == Role.WORKER_ACCOUNTANT || LogInEvent.getRole() == Role.ADMIN)
 				TabWorkerEvent.getInstance(tabbedForm);
 			break;*/

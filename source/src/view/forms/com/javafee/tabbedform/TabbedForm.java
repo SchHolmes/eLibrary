@@ -20,6 +20,8 @@ import com.javafee.startform.LogInForm;
 import com.javafee.tabbedform.clients.ClientTablePanel;
 import com.javafee.tabbedpane.admdictionaries.AdmDictionaryPanel;
 import com.javafee.tabbedpane.books.BookTablePanel;
+import com.javafee.tabbedpane.library.LibraryTablePanel;
+import com.javafee.tabbedpane.loanservice.LoanServicePanel;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,8 +34,10 @@ public class TabbedForm {
 
 	private JTabbedPane tabbedPane;
 	private ClientTablePanel panelClient;
+	private LibraryTablePanel panelLibrary;
 	private BookTablePanel panelBook;
 	private AdmDictionaryPanel panelAdmDictionary;
+	private LoanServicePanel panelLoanService;
 
 	private JLabel lblLogInInformation;
 	private JLabel lblSystemInformation;
@@ -126,12 +130,18 @@ public class TabbedForm {
 		panelClient = new ClientTablePanel();
 		tabbedPane.addTab("Clients", null, panelClient, null);
 
+		panelLibrary = new LibraryTablePanel();
+		tabbedPane.addTab("Library", null, panelLibrary, null);
+		
 		panelBook = new BookTablePanel();
 		tabbedPane.addTab("Books", null, panelBook, null);
 		
 		panelAdmDictionary = new AdmDictionaryPanel();
 		tabbedPane.addTab("Dictionaries", null, panelAdmDictionary, null);
-
+		
+		panelLoanService = new LoanServicePanel();
+		tabbedPane.addTab("Loans", null, panelLoanService, null);
+		
 		frame.pack();
 	}
 }
