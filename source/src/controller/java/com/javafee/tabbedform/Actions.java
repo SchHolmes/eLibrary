@@ -62,11 +62,13 @@ public class Actions implements IActionForm {
 			if (LogInEvent.getRole() != Constants.Role.CLIENT)
 				TabLoadServiceEvent.getInstance(tabbedForm);
 			break;
-		/*
-		 * case TAB_ADM_WORKER: if(LogInEvent.getRole() == Role.WORKER_ACCOUNTANT ||
-		 * LogInEvent.getRole() == Role.ADMIN) TabWorkerEvent.getInstance(tabbedForm);
-		 * break;
-		 */
+		case TAB_ADM_WORKER:
+			if (LogInEvent.getRole() != Constants.Role.CLIENT
+					&& (LogInEvent.getRole() == Constants.Role.WORKER_ACCOUNTANT
+							|| LogInEvent.getRole() == Constants.Role.ADMIN))
+				TabWorkerEvent.getInstance(tabbedForm);
+			break;
+
 		default:
 			break;
 		}

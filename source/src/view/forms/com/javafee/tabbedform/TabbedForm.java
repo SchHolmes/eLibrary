@@ -20,6 +20,7 @@ import com.javafee.loginform.LogInEvent;
 import com.javafee.startform.LogInForm;
 import com.javafee.tabbedform.clients.ClientTablePanel;
 import com.javafee.tabbedpane.admdictionaries.AdmDictionaryPanel;
+import com.javafee.tabbedpane.admworkers.WorkerTablePanel;
 import com.javafee.tabbedpane.books.BookTablePanel;
 import com.javafee.tabbedpane.library.LibraryTablePanel;
 import com.javafee.tabbedpane.loanservice.LoanServicePanel;
@@ -35,6 +36,7 @@ public class TabbedForm {
 
 	private JTabbedPane tabbedPane;
 	private ClientTablePanel panelClient;
+	private WorkerTablePanel panelWorker;
 	private LibraryTablePanel panelLibrary;
 	private BookTablePanel panelBook;
 	private AdmDictionaryPanel panelAdmDictionary;
@@ -130,23 +132,28 @@ public class TabbedForm {
 
 		panelClient = new ClientTablePanel();
 		if (LogInEvent.getRole() != Constants.Role.CLIENT)
-		tabbedPane.addTab("Clients", null, panelClient, null);
+			tabbedPane.addTab("Clients", null, panelClient, null);
 
 		panelLibrary = new LibraryTablePanel();
 		tabbedPane.addTab("Library", null, panelLibrary, null);
-		
+
 		panelBook = new BookTablePanel();
 		if (LogInEvent.getRole() != Constants.Role.CLIENT)
-		tabbedPane.addTab("Books", null, panelBook, null);
-		
+			tabbedPane.addTab("Books", null, panelBook, null);
+
 		panelAdmDictionary = new AdmDictionaryPanel();
 		if (LogInEvent.getRole() != Constants.Role.CLIENT)
-		tabbedPane.addTab("Dictionaries", null, panelAdmDictionary, null);
-		
+			tabbedPane.addTab("Dictionaries", null, panelAdmDictionary, null);
+
 		panelLoanService = new LoanServicePanel();
 		if (LogInEvent.getRole() != Constants.Role.CLIENT)
-		tabbedPane.addTab("Loans", null, panelLoanService, null);
-		
+			tabbedPane.addTab("Loans", null, panelLoanService, null);
+
+		panelWorker = new WorkerTablePanel();
+		if (LogInEvent.getRole() != Constants.Role.CLIENT && (LogInEvent.getRole() == Constants.Role.ADMIN
+				|| LogInEvent.getRole() != Constants.Role.WORKER_ACCOUNTANT))
+			tabbedPane.addTab("Workers management", null, panelWorker, null);
+
 		frame.pack();
 	}
 }
