@@ -8,7 +8,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Constants {
 	public enum Tab {
-		TAB_CLIENT(0), TAB_LIBRARY(4), TAB_BOOK(1), TAB_LOAN_SERVICE(3), TAB_ADM_DICTIONARY(2), TAB_ADM_WORKER(5);
+		TAB_CLIENT(0), TAB_BOOK(2), TAB_ADM_DICTIONARY(3), TAB_LIBRARY(1), TAB_LOAN_SERVICE(4), TAB_ADM_WORKER(5);
 
 		private final Integer value;
 
@@ -126,6 +126,47 @@ public class Constants {
 		}
 	}
 
+	public enum VolumeTableColumn {
+		COL_BOOK_TITLE(0), COL_BOOK_ISBN_NUMBER(1), COL_INVENTORY_NUMBER(2), COL_BOOK_NUMBER_OF_PAGE(3),
+		COL_BOOK_NUMBER_OF_TOME(4), COL_IS_READING_ROOM(5);
+
+		private final Integer value;
+
+		VolumeTableColumn(final int newValue) {
+			value = newValue;
+		}
+
+		public Integer getValue() {
+			return value;
+		}
+
+		public static VolumeTableColumn getByNumber(int volumeTableSelectedIndex) {
+			return Stream.of(VolumeTableColumn.values())
+					.filter(item -> item.getValue().equals(volumeTableSelectedIndex)).findFirst().get();
+		}
+	}
+
+	public enum LendTableColumn {
+		COL_CLIENT_BASIC_DATA(0), COL_CLIENT_PESEL_NUMBER(1), COL_CLIENT_DOCUMENT_NUMBER(2), COL_VOLUME_BOOK_TITLE(3),
+		COL_VOLUME_BOOK_ISBN_NUMBER(4), COL_VOLUME_INVENTORY_NUMBER(5), COL_LEND_DATE(6), COL_RETURNED_DATE(7),
+		COL_PENALTY(8);
+
+		private final Integer value;
+
+		LendTableColumn(final int newValue) {
+			value = newValue;
+		}
+
+		public Integer getValue() {
+			return value;
+		}
+
+		public static LendTableColumn getByNumber(int lendTableSelectedIndex) {
+			return Stream.of(LendTableColumn.values()).filter(item -> item.getValue().equals(lendTableSelectedIndex))
+					.findFirst().get();
+		}
+	}
+
 	public enum Context {
 		ADDITION, MODIFICATION, CANCELED, LOAN, READING_ROOM;
 	}
@@ -141,9 +182,10 @@ public class Constants {
 	public static final Integer APPLICATION_MAX_PASSWORD_LENGTH = 16;
 	public static final Integer APPLICATION_GENERATE_PASSWORD_LENGTH = 16;
 	public static final SimpleDateFormat APPLICATION_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
-
-	public static final String LANGUAGE_RESOURCE_BUNDLE = "messages";
+	public static final String APPLICATION_CURRENCY = "PLN";
 	
+	public static final String LANGUAGE_RESOURCE_BUNDLE = "messages";
+
 	public static final String RADIO_BUTTON_AUTHOR = "Author";
 	public static final String RADIO_BUTTON_CATEGORY = "Category";
 	public static final String RADIO_BUTTON_PUBLISHING_HOUSE = "Publishing house";
@@ -157,5 +199,6 @@ public class Constants {
 	public final String DATA_BASE_PASSWORD = "admin123";
 	public final String DATA_BASE_ADMIN_LOGIN = "admin";
 	public final String DATA_BASE_ADMIN_PASSWORD = "f7e3c24e1a04758097f69be41aa3cf18";
+	public static double PENALTY_VALUE = 0.60;
 
 }
