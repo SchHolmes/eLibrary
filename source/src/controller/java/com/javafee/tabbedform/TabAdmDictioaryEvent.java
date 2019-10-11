@@ -110,6 +110,13 @@ public class TabAdmDictioaryEvent implements IActionForm {
 	}
 
 	private void onClickBtnAdd(String pressedRadioButton) {
+		if(tabbedForm.getPanelAdmDictionary().getRadioButtonAuthor().isSelected())
+			pressedRadioButton = Constants.RADIO_BUTTON_AUTHOR;
+		if(tabbedForm.getPanelAdmDictionary().getRadioButtonCategory().isSelected())
+			pressedRadioButton = Constants.RADIO_BUTTON_CATEGORY;
+		if(tabbedForm.getPanelAdmDictionary().getRadioButtonPublishingHouse().isSelected())
+			pressedRadioButton = Constants.RADIO_BUTTON_PUBLISHING_HOUSE;
+		
 		switch (pressedRadioButton) {
 		case Constants.RADIO_BUTTON_AUTHOR:
 			try {

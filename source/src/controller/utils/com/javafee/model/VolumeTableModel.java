@@ -81,10 +81,8 @@ public class VolumeTableModel extends AbstractTableModel {
 			return volume.getBook().getNumberOfTomes();
 		case COL_IS_READING_ROOM:
 			return volume.getIsReadingRoom()
-					? SystemProperties.getInstance().getResourceBundle()
-							.getString("volumeTableModel.isReadigRoomTrueVal")
-					: SystemProperties.getInstance().getResourceBundle()
-							.getString("volumeTableModel.isReadigRoomFalseVal");
+					? "Yes"
+					: "No";
 		default:
 			return null;
 		}
