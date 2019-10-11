@@ -27,7 +27,7 @@ public class Actions implements IActionForm {
 
 	@Override
 	public void initializeForm() {
-		//reloadLblLogInInformationDynamic();
+		// reloadLblLogInInformationDynamic();
 		reloadTabbedPane();
 	}
 
@@ -42,25 +42,31 @@ public class Actions implements IActionForm {
 	private void reloadTabbedPane() {
 		switch (Constants.Tab.getByNumber(tabbedForm.getTabbedPane().getSelectedIndex())) {
 		case TAB_CLIENT:
-			TabClientEvent.getInstance(tabbedForm);
+			if (LogInEvent.getRole() != Constants.Role.CLIENT)
+				TabClientEvent.getInstance(tabbedForm);
 			break;
 		case TAB_BOOK:
-			TabBookEvent.getInstance(tabbedForm);
+			if (LogInEvent.getRole() != Constants.Role.CLIENT)
+				TabBookEvent.getInstance(tabbedForm);
 			break;
 		case TAB_ADM_DICTIONARY:
-			if(LogInEvent.getRole() == Constants.Role.WORKER_ACCOUNTANT || LogInEvent.getRole() == Constants.Role.ADMIN)
+			if (LogInEvent.getRole() != Constants.Role.CLIENT
+					&& (LogInEvent.getRole() == Constants.Role.WORKER_ACCOUNTANT
+							|| LogInEvent.getRole() == Constants.Role.ADMIN))
 				TabAdmDictioaryEvent.getInstance(tabbedForm);
 			break;
 		case TAB_LIBRARY:
 			TabLibraryEvent.getInstance(tabbedForm);
 			break;
 		case TAB_LOAN_SERVICE:
-			TabLoadServiceEvent.getInstance(tabbedForm);
+			if (LogInEvent.getRole() != Constants.Role.CLIENT)
+				TabLoadServiceEvent.getInstance(tabbedForm);
 			break;
-		/*case TAB_ADM_WORKER:
-			if(LogInEvent.getRole() == Role.WORKER_ACCOUNTANT || LogInEvent.getRole() == Role.ADMIN)
-				TabWorkerEvent.getInstance(tabbedForm);
-			break;*/
+		/*
+		 * case TAB_ADM_WORKER: if(LogInEvent.getRole() == Role.WORKER_ACCOUNTANT ||
+		 * LogInEvent.getRole() == Role.ADMIN) TabWorkerEvent.getInstance(tabbedForm);
+		 * break;
+		 */
 		default:
 			break;
 		}

@@ -220,20 +220,20 @@ public class ClientAddModEvent {
 
 			if (Params.getInstance().get("ALREADY_REGISTERED") != null) {
 				errorBuilder.append(
-						SystemProperties.getInstance().getResourceBundle().getString("startForm.registrationError5"));
+						"User with given login or pesel number already exist. Change login.<br>");
 				Params.getInstance().remove("ALREADY_REGISTERED");
 			}
 			if (Params.getInstance().get("PARAMETERS_ERROR") != null) {
 				errorBuilder.append(
-						SystemProperties.getInstance().getResourceBundle().getString("startForm.registrationError6"));
+						"Typed parameters are incorrect. Change wrong data.<br>");
 			}
 			if (Params.getInstance().get("WEAK_PASSWORD") != null) {
 				errorBuilder.append(
-						SystemProperties.getInstance().getResourceBundle().getString("startForm.registrationError7"));
+						"Password is too weak. Change it, remember that it have to:<br>- password must be between 8 and 16 chars long, <br>- don't allow whitespace,<br>- require at least 1 digit in passwords,<br>- require at least 1 non-alphanumeric char,<br>- require at least 1 upper case char,<br>- require at least 1 lower case char,<br>- don't allow qwerty sequences,<br>- don't allow 4 repeat characters.<br>");
 			}
 
 			LogGuiException.logError(
-					SystemProperties.getInstance().getResourceBundle().getString("startForm.registrationErrorTitle"),
+					"Registration error",
 					errorBuilder.toString(), e);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -241,8 +241,8 @@ public class ClientAddModEvent {
 
 		if (registrationEvent != null)
 			Utils.displayOptionPane(
-					SystemProperties.getInstance().getResourceBundle().getString("startForm.registrationSuccess2"),
-					SystemProperties.getInstance().getResourceBundle().getString("startForm.registrationSuccess2Title"),
+					"Success, you typed correct data and you are now register. Please wait for user<br> authentication after which you will be able to log into the system. If you have any<br> questions contact with e-library administrator.<br>",
+					"Success",
 					JOptionPane.INFORMATION_MESSAGE);
 	}
 
@@ -252,10 +252,8 @@ public class ClientAddModEvent {
 		if (clientAddModFrame.getClientDataPanel().getTextFieldLogin().getText().isEmpty()
 				|| clientAddModFrame.getClientDataPanel().getPasswordField().getPassword().length == 0)
 			JOptionPane.showMessageDialog(clientAddModFrame,
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("startForm.validateRegistrationError8"),
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("startForm.validateRegistrationError8Title"),
+					"There is not enough data in registration form. Require at least login and password.",
+					"Not enough data",
 					JOptionPane.ERROR_MESSAGE);
 		else
 			result = true;

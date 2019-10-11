@@ -45,7 +45,7 @@ public class StartForm {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		frmElibrary.getContentPane().setLayout(gridBagLayout);
 
-		JLabel lblHello = new JLabel(SystemProperties.getInstance().getResourceBundle().getString("startForm.lblHello"));
+		JLabel lblHello = new JLabel("Hello to the e-library system");
 		lblHello.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblHello = new GridBagConstraints();
 		gbc_lblHello.anchor = GridBagConstraints.WEST;
@@ -65,7 +65,7 @@ public class StartForm {
 		gbc_logInPanel.gridy = 1;
 		frmElibrary.getContentPane().add(logInPanel, gbc_logInPanel);
 
-		btnLogIn = new JButton(SystemProperties.getInstance().getResourceBundle().getString("startForm.btnLogIn"));
+		btnLogIn = new JButton("Log in");
 		btnLogIn.setIcon(new ImageIcon(new ImageIcon(RegistrationPanel.class.getResource("/images/btnLogIn-ico.png")).getImage().getScaledInstance(18, 18, Image.SCALE_SMOOTH)));
 		btnLogIn.setBorderPainted(true);
 		btnLogIn.setFocusPainted(true);

@@ -35,27 +35,27 @@ public class Actions {
 
 				if (Params.getInstance().get("NO_USER") != null) {
 					errorBuilder.append(
-							SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInError3"));
+							"No user in database.<br>");
 					Params.getInstance().remove("NO_USER");
 				}
 				if (Params.getInstance().get("BAD_PASSWORD") != null) {
 					errorBuilder.append(
-							SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInError2"));
+							"Invalid password.<br>");
 					Params.getInstance().remove("BAD_PASSWORD");
 				}
 				if (Params.getInstance().get("NOT_REGISTERED") != null) {
 					errorBuilder.append(
-							SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInError4"));
+							"User not registered. Please wait for user authentication after which you will be<br>able to log into the system.<br>");
 					Params.getInstance().remove("NOT_REGISTERED");
 				}
 				if (Params.getInstance().get("NOT_HIRED") != null) {
 					errorBuilder.append(
-							SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInError9"));
+							"User not hired.<br>");
 					Params.getInstance().remove("NOT_HIRED");
 				}
 
 				LogGuiException.logError(
-						SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInErrorTitle"),
+						"Log in error",
 						errorBuilder.toString(), e);
 
 				clearLogInFailsInParams();
@@ -63,8 +63,8 @@ public class Actions {
 
 			if (logInEvent != null) {
 				JOptionPane.showMessageDialog(logInForm.getLogInPanel(),
-						SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInSuccess1"),
-						SystemProperties.getInstance().getResourceBundle().getString("logInForm.logInSuccess1Title"),
+						"Success, you typed the right password.",
+						"Success",
 						JOptionPane.INFORMATION_MESSAGE);
 				openTabbedForm();
 			}
@@ -88,8 +88,8 @@ public class Actions {
 		boolean result = false;
 		if (logInForm.getTextFieldLogin().getText().isEmpty() || logInForm.getPasswordField().getPassword().length == 0)
 			JOptionPane.showMessageDialog(logInForm.$$$getRootComponent$$$(),
-					SystemProperties.getInstance().getResourceBundle().getString("logInForm.validateLogInError1"),
-					SystemProperties.getInstance().getResourceBundle().getString("logInForm.validateLogInError1Title"),
+					"There is not enough data in log in form. Require at least login and password.",
+					"Not enough data",
 					JOptionPane.ERROR_MESSAGE);
 		else
 			result = true;

@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import com.javafee.common.Constants;
 import com.javafee.common.Constants.Context;
+import com.javafee.common.Constants.Role;
 import com.javafee.common.IActionForm;
 import com.javafee.common.Params;
 import com.javafee.common.SystemProperties;
@@ -16,6 +17,7 @@ import com.javafee.hibernate.dto.library.Author;
 import com.javafee.hibernate.dto.library.Category;
 import com.javafee.hibernate.dto.library.PublishingHouse;
 import com.javafee.hibernate.dto.library.Volume;
+import com.javafee.loginform.LogInEvent;
 import com.javafee.model.VolumeTableLoanModel;
 import com.javafee.model.VolumeTableModel;
 import com.javafee.model.VolumeTableReadingRoomModel;
@@ -77,10 +79,8 @@ public class TabLibraryEvent implements IActionForm {
 			}
 		} else {
 			LogGuiException.logWarning(
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("libraryAddModEvent.notSelectedVolumeWarningTitle"),
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("libraryAddModEvent.notSelectedVolumeWarning"));
+					"Rows not selected",
+					"Any rows has been selected. The action can not been performed.");
 		}
 
 	}
@@ -105,10 +105,8 @@ public class TabLibraryEvent implements IActionForm {
 			}
 		} else {
 			LogGuiException.logWarning(
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("libraryAddModEvent.notSelectedVolumeWarningTitle"),
-					SystemProperties.getInstance().getResourceBundle()
-							.getString("libraryAddModEvent.notSelectedVolumeWarning"));
+					"Rows not selected",
+					"Any rows has been selected. The action can not been performed.");
 		}
 	}
 
@@ -133,9 +131,10 @@ public class TabLibraryEvent implements IActionForm {
 
 	@Override
 	public void initializeForm() {
-		// reloadBookFilterPanel();
-		// switchPerspectiveToAdm(LogInEvent.getRole() == Role.ADMIN ||
-		// LogInEvent.getRole() == Role.WORKER_ACCOUNTANT);
+		setComponentsVisibility();
+	}
+
+	private void setComponentsVisibility() {
 	}
 
 	public void setTabbedForm(TabbedForm tabbedForm) {
