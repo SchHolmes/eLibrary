@@ -8,7 +8,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <postgresql.driver.version>42.1.4</postgresql.driver.version>
+        <postgresql.driver.version>42.4.1</postgresql.driver.version>
         <org.hibernate.version>5.4.1.Final</org.hibernate.version>
         <org.reflections.version>0.9.10</org.reflections.version>
     </properties>
